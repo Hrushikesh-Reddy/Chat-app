@@ -5,6 +5,8 @@ const { saveUser, getUser, createChat } = require("../Model/database");
 
 const register = async (req, res) => {
   //console.log(req.body)
+  var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+  console.log(fullUrl)
   let user = req.body.username;
   let password = req.body.password;
   try {
