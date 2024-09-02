@@ -12,6 +12,7 @@
   "type": "commonjs",
   "dependencies": {
     "@google/generative-ai": "^0.17.1",
+    "backend": "file:",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -19,8 +20,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.5.4",
     "morgan": "^1.10.0",
+    "nodemon": "^3.1.4",
     "socket.io": "^4.7.5",
-    "sqlite3": "^5.1.7",
     "uuid": "^10.0.0"
   }
 }
