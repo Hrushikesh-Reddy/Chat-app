@@ -26,6 +26,10 @@ app.use("/api", authRouter);
 app.use("/chat", chatRouter);
 app.use(genRouter);
 
+app.get("/choreo", (req, res)=>{
+  res.end("Up...");
+})
+
 async function gen(prompt) {
   const result = await model.generateContent(prompt);
   //console.log(result.response.text());
@@ -34,22 +38,22 @@ async function gen(prompt) {
 
 const io = new Server(httpServer, {
   cors: {
-    origin: "*"
-  }
+    origin: "*",
+  },
 });
 
 //let current_room;
 
 io.engine.on("connection_error", (err) => {
-  console.log(err.req);      // the request object
-  console.log(err.code);     // the error code, for example 1
-  console.log(err.message);  // the error message, for example "Session ID unknown"
-  console.log(err.context);  // some additional error context
+  console.log(err.req); // the request object
+  console.log(err.code); // the error code, for example 1
+  console.log(err.message); // the error message, for example "Session ID unknown"
+  console.log(err.context); // some additional error context
 });
 
 io.on("connection", (socket) => {
   socket.on("room-id", async (id) => {
-    console.log("id : ", id)
+    console.log("id : ", id);
     socket.join(id);
     //current_room = id;
   });
@@ -61,12 +65,12 @@ io.on("connection", (socket) => {
 
   socket.on("gem-prompt", async (room, data) => {
     let response;
-    try{
+    try {
       //throw new Error("nothin");
-      response = await gen(data.message);}
-    catch(error){
+      response = await gen(data.message);
+    } catch (error) {
       console.error(error);
-      response = "An error occured, please try again later..."
+      response = "An error occured, please try again later...";
     }
     //let response = "sample";
     const gemdata = {

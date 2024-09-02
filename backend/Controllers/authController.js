@@ -5,8 +5,8 @@ const { saveUser, getUser, createChat } = require("../Model/database");
 
 const register = async (req, res) => {
   //console.log(req.body)
-  const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
-  
+  const fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
+
   let user = req.body.username;
   let password = req.body.password;
   try {
@@ -24,7 +24,6 @@ const register = async (req, res) => {
           username: "Gemini",
           chatData: { to: user, id: chatid },
         };
-        console.log("Full____----URL : ",fullUrl)
         await createChat([ob1, ob2]);
       }
     });
