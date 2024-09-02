@@ -33,9 +33,9 @@ async function gen(prompt) {
 }
 
 const io = new Server(httpServer, {
-/*   cors: {
-    origin: "/choreo-apis/chatapp/backend/v1",
-  }, */
+  cors: {
+    origin: "https://d375fde1-518f-48b0-a740-d2e359b482eb.e1-us-east-azure.choreoapps.dev/choreo-apis/chatapp/backend/v1",
+  },
   connectionStateRecovery: {},
 });
 
