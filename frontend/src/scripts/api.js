@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ACCESS_TOKEN} from "./constants";
 
-const apiURL = "https://c37ebc4c-8f89-49f7-bc20-30c8c34ad918-dev.e1-us-east-azure.choreoapis.dev/chatapp/backend/v1"
+const apiURL = "/choreo-apis/chatapp/backend/v1"
 
 const api = axios.create({
     baseURL : import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : apiURL
