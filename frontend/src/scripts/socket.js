@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 
 const URL =
-  "https://c37ebc4c-8f89-49f7-bc20-30c8c34ad918-dev.e1-us-east-azure.choreoapis.dev/chatapp/backend/v1/choreo-apis/chatapp/backend/v1";
+  "https://d375fde1-518f-48b0-a740-d2e359b482eb.e1-us-east-azure.choreoapps.dev/chatapp/backend/v1/choreo-apis/chatapp/backend/v1";
 
 export const socket = io(URL, {
   //transports: ["websocket"],
