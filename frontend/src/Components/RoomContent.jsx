@@ -52,8 +52,8 @@ export default function RoomContent({
     function onConnect() {
       socket.emit("connection", "yay");
       socket.emit("room-id", Room_id);
-      //console.log(Room_id);
-      // console.log("Connected");
+      console.log(Room_id);
+      console.log("Connected");
     }
 
     function onDisconnect() {
