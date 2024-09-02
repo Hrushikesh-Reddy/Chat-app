@@ -34,9 +34,8 @@ async function gen(prompt) {
 
 const io = new Server(httpServer, {
   cors: {
-    origin: "*",
-  },
-  connectionStateRecovery: {}
+    origin: "*"
+  }
 });
 
 //let current_room;
