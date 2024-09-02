@@ -18,6 +18,7 @@ export default function Chats() {
       })
       .then((past) => {
         if (past) {
+          console.log(past.config);
           //console.log(past);
           const data = past.data;
           //console.log(data)
