@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-//const cors = require("cors");
+const cors = require("cors");
 const { createServer } = require("node:http");
 const { Server } = require("socket.io");
 const { saveMessage } = require("./Model/database");
@@ -20,7 +20,7 @@ const chatRouter = require("./Routes/chatRouter");
 
 app.use(express.json());
 app.use(morgan("dev"));
-//app.use(cors());
+app.use(cors("https://d375fde1-518f-48b0-a740-d2e359b482eb.e1-us-east-azure.choreoapps.dev/"));
 
 app.use("/api", authRouter);
 app.use("/chat", chatRouter);
