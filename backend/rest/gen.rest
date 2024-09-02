@@ -1,7 +1,0 @@
-GET http://localhost:3000/chat/get
-content-type: application/json
-Auth:bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidXNlcjEiLCJpYXQiOjE3MjQ2NzM4OTB9.SDLKFy-RxzcT7PiarICRfKY1jR3SoemkCbhY92cXsQ4
-
-{
-    "username":"user1"
-}
