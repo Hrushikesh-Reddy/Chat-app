@@ -1,7 +1,7 @@
 import axios from "axios";
 import { ACCESS_TOKEN} from "./constants";
 
-const apiURL = "/choreo-apis/chatapp/backend/v1"
+const apiURL = "https://chat-app-c2ux.onrender.com/"
 
 const api = axios.create({
     baseURL : import.meta.env.VITE_API_URL ? import.meta.env.VITE_API_URL : apiURL
