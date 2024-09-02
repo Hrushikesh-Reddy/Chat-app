@@ -4,6 +4,6 @@ const URL =
   "/choreo-apis/chatapp/backend/v1"
 
 export const socket = io(URL, {
-  transports: ["websocket"],
+  //transports: ["websocket"],
   autoConnect: false,
 });
