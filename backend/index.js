@@ -43,7 +43,7 @@ const io = new Server(httpServer, {
 
 io.on("connection", (socket) => {
   socket.on("room-id", async (id) => {
-    // console.log("id : ", id)
+    console.log("id : ", id)
     socket.join(id);
     //current_room = id;
   });
