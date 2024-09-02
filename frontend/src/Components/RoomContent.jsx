@@ -16,7 +16,7 @@ export default function RoomContent({
 }) {
   const [msg, setMsg] = useState("");
   const [texts, setTexts] = useState([]);
-  const [load, setLoad] = useState(false)
+  const [load, setLoad] = useState(false);
 
   function handleClose() {
     handleRoom();
@@ -37,7 +37,7 @@ export default function RoomContent({
     };
     //integrate gem
     if (user === "Gemini") {
-      setLoad(true)
+      setLoad(true);
       socket.emit("gem-prompt", Room_id, data);
     } else {
       socket.emit("msg", Room_id, data);
@@ -75,10 +75,22 @@ export default function RoomContent({
       });
     }
 
+    function onConnectError(err) {
+      // the reason of the error, for example "xhr poll error"
+      console.log(err.message);
+
+      // some additional description, for example the status code of the initial HTTP response
+      console.log(err.description);
+
+      // some additional context, for example the XMLHttpRequest object
+      console.log(err.context);
+    }
+
     socket.on("connect", onConnect);
     socket.on("disconnect", onDisconnect);
     socket.on("from-server", onServerMessage);
     socket.on("bot-response", onBotResponse);
+    socket.on("connect_error", onConnectError);
 
     socket.connect();
     api.get("/chat/getmsg", { params: { id: Room_id } }).then((res) => {
@@ -90,6 +102,7 @@ export default function RoomContent({
       socket.off("disconnect", onDisconnect);
       socket.off("from-server", onServerMessage);
       socket.off("bot-response", onBotResponse);
+      socket.off("connect_error", onConnectError);
     };
   }, []);
 
