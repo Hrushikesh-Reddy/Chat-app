@@ -20,20 +20,20 @@ const chatRouter = require("./Routes/chatRouter");
 
 app.use(express.json());
 app.use(morgan("dev"));
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Auth, auth");
+  next();
+});
 app.use(cors({
   "origin": "*",
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  "preflightContinue": true,
+  "preflightContinue": false,
   "optionsSuccessStatus": 204
 }
 ));
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Auth");
-  next();
-});
 
 app.use("/api", authRouter);
 app.use("/chat", chatRouter);
