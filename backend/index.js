@@ -20,7 +20,7 @@ const chatRouter = require("./Routes/chatRouter");
 
 app.use(express.json());
 app.use(morgan("dev"));
-app.use(cors());
+app.use(cors({origin:"https://chat-app-1-rksp.onrender.com"}));
 
 app.use("/api", authRouter);
 app.use("/chat", chatRouter);

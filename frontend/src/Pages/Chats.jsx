@@ -9,18 +9,24 @@ export default function Chats() {
   const [pastData, setPastData] = useState([]);
   const CURRENT_USER = jwtDecode(localStorage.getItem(ACCESS_TOKEN)).user;
 
-  async function getC(){
+  useEffect(() => {
     const reqdata = { username: CURRENT_USER };
     //console.log(reqdata);
-    const res = await api.get("/chat/get", {params: { reqdata }});
-    return res.data;
-  }
-
-  useEffect(() => {
-    getC.then((data)=>{
-      console.log(data);
-      setPastData(data);
-    })
+    api
+      .get("/chat/get", {
+        params: { reqdata },
+      })
+      .then((past) => {
+        if (past) {
+          console.log(past.status+"\n\n"+past.data);
+          //console.log(past);
+          const data = past.data;
+          //console.log(data)
+          setPastData(data);
+        } else {
+          localStorage.clear();
+        }
+      });
   }, []);
 
   return (
