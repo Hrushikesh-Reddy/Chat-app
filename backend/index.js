@@ -3,7 +3,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const { createServer } = require("node:http");
 const { Server } = require("socket.io");
-const { saveMessage } = require("./Model/database");
+const { connect, saveMessage } = require("./Model/database");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 require("dotenv").config();
 
@@ -96,4 +96,7 @@ io.on("connection", (socket) => {
   });
 });
 
-httpServer.listen(PORT, console.log(`listening on port ${PORT}...`));
+httpServer.listen(PORT, async() => {
+  await connect();
+  console.log(`listening on port ${PORT}...`)
+});

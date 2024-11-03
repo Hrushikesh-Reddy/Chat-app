@@ -4,9 +4,18 @@ require("dotenv").config();
 
 const URL = process.env.MONGO_URL;
 
+async function connect(){
+  try{
+    await mongoose.connect(URL);
+    console.log("MongoDb connected !!");
+  }catch(e){
+    console.error(e);
+  }
+}
+
 async function saveUser(obj) {
   try {
-    await mongoose.connect(URL);
+    
     //console.log(users);
     await users.insertMany([obj]);
   } catch (e) {
@@ -18,7 +27,7 @@ async function saveUser(obj) {
 
 async function saveMessage(obj) {
   try {
-    await mongoose.connect(URL);
+    
     await messages.insertMany(obj);
   } catch (e) {
     console.error(e);
@@ -29,7 +38,7 @@ async function saveMessage(obj) {
 
 async function getMessage(room_id) {
   try {
-    await mongoose.connect(URL);
+    
     let data = await messages.find({ room_id: room_id });
     return data;
   } catch (e) {
@@ -42,7 +51,7 @@ async function getMessage(room_id) {
 
 async function createChat(data) {
   try {
-    await mongoose.connect(URL);
+    
     let res = await chats.insertMany(data);
     //console.log(res);
     return res;
@@ -55,7 +64,7 @@ async function createChat(data) {
 
 async function getChats(username) {
   try {
-    await mongoose.connect(URL);
+    
     //console.log(username);
     let data = await chats.find({ username: username });
     return data;
@@ -69,7 +78,7 @@ async function getChats(username) {
 
 async function getUser(username) {
   try {
-    await mongoose.connect(URL);
+    
     //console.log(username);
     let data = await users.findOne({ username: username });
     return data;
@@ -88,4 +97,5 @@ module.exports = {
   getChats,
   saveMessage,
   getMessage,
+  connect
 };
